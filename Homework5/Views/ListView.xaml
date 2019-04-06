@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Homework5.Views.ListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0" Content="Open folder"  Command="{Binding Open}"></Button>
+        <Button Grid.Column="1" Grid.Row="0" Content="Kill" Command="{Binding Kill}"></Button>
+
+        <Label Content="Modules"  Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></Label>
+        <DataGrid Grid.Column="0" Grid.Row="2" Grid.RowSpan="3" ItemsSource="{Binding Modules, Mode=TwoWay}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Path" Binding="{Binding Path}"></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+        <Label Content="Threads"  Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30"></Label>
+        <DataGrid Grid.Column="0" Grid.Row="6" Grid.RowSpan="7" ItemsSource="{Binding Threads, Mode=TwoWay}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="State" Binding="{Binding State}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding Date}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid  SelectedItem="{Binding Item, Mode=TwoWay}"  IsReadOnly="True"   Grid.Column="1" Grid.ColumnSpan="6" Grid.Row="1" Grid.RowSpan="10" ItemsSource="{Binding ViewSource.View}" AutoGenerateColumns="False" >
+            <DataGrid.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="Blue"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey}" Color="White"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"  Color="Blue"/>
+                <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="White"/>
+
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Value.Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Id" Binding="{Binding Value.Id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Is active" Binding="{Binding Value.IsActice}"></DataGridTextColumn>
+                <DataGridTextColumn Header="CPUUsage %" Binding="{Binding Value.CPUUsage}"></DataGridTextColumn>
+                <DataGridTextColumn Header="RAMUsage %, Mb" Binding="{Binding Value.RAMUsage}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Number of threads" Binding="{Binding Value.NumOfThreads}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Date" Binding="{Binding Value.Date}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Path" Binding="{Binding Value.Path}"></DataGridTextColumn>
+                
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+            
+          
+    </Grid>
+</UserControl>
